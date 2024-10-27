@@ -1,3 +1,5 @@
+package Classes;
+
 public class User implements Comparable<User>  {
     private  final String name;
     private final String password;

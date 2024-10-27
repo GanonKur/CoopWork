@@ -1,3 +1,5 @@
+package Classes;
+
 public class Student implements Comparable<Student>    {
     private final int groupNumber;
     private final float averageScore;
