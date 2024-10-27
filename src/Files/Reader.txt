@@ -1,0 +1,18 @@
+Users:
+User{name='Alie', password='password2', email='alice@example.com'}
+User{name='Bob', password='password1', email='bob@example.com'}
+User{name='Car', password='password3', email='charlie@example.com'}
+User{name='Alie', password='password1', email='alice123@example.com'}
+User{name='Bob', password='password2', email='bob123@example.com'}
+
+Buses:
+Bus{number=3, model='Model A', mileage=50000}
+Bus{number=1, model='Model B', mileage=70000}
+Bus{number=2, model='Model A', mileage=30000}
+Bus{number=1, model='Model C', mileage=40000}
+
+Students:
+Student{groupNumber=5, averageScore=5.3, studentIdCard=6}
+Student{groupNumber=1, averageScore=5.4, studentIdCard=6}
+Student{groupNumber=1, averageScore=5.4, studentIdCard=7}
+Student{groupNumber=1, averageScore=5.3, studentIdCard=6}
