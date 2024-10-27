@@ -1,0 +1,19 @@
+Users:
+User{='nameAlie', password='password1', emai='alice123@example.com'}
+User{='nameAlie', password='password2', emai='alice@example.com'}
+User{='nameBob', password='password1', emai='bob@example.com'}
+User{='nameBob', password='password2', emai='bob123@example.com'}
+User{='namecar', password='password3', emai='charlie@example.com'}
+
+Buses:
+Bus{number='1', model='Model C', mileage='40000'}
+Bus{number='1', model='Model B', mileage='70000'}
+Bus{number='2', model='Model A', mileage='30000'}
+Bus{number='3', model='Model A', mileage='50000'}
+
+Students:
+Student{groupNumber='1', averageScore='5.3', studentIdCard='6'}
+Student{groupNumber='1', averageScore='5.4', studentIdCard='6'}
+Student{groupNumber='1', averageScore='5.4', studentIdCard='7'}
+Student{groupNumber='5', averageScore='5.3', studentIdCard='6'}
+
