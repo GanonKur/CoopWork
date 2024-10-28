@@ -1,15 +1,16 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
-    // Массивы для хранения списка имен и фамилий
     private static final String[] NAMES = {
             "Alexander", "Mikhail", "Dmitry", "Andrey", "Sergey", "Nikolay", "Ivan", "Alexey",
             "Vladimir", "Evgeny", "Maxim", "Oleg", "Pavel", "Konstantin", "Roman", "Yuri",
-            "Viktor", "Vitaly", "Boris", "Anton",  // Мужские имена
-            "Anna", "Maria", "Elena", "Olga", "Svetlana", "Tatiana", "Irina", "Natalia",
-            "Ekaterina", "Galina" // Женские имена
+            "Viktor", "Vitaly", "Boris", "Anton", "Anna", "Maria", "Elena", "Olga", "Svetlana",
+            "Tatiana", "Irina", "Natalia", "Ekaterina", "Galina"
     };
 
     private static final String[] SURNAMES = {
@@ -24,90 +25,90 @@ public class Main {
         boolean continueProgram = true;
 
         while (continueProgram) {
-            // Меню выбора действий
-            System.out.println("\nВыберите действие:");
-            System.out.println("1 - Сгенерировать массив объектов Bus");
-            System.out.println("2 - Сгенерировать массив объектов User");
-            System.out.println("3 - Сгенерировать массив объектов Student");
-            System.out.println("0 - Выйти из программы");
-            int choice = scanner.nextInt();
+            try {
+                System.out.println("\nВыберите действие:");
+                System.out.println("1 - Сгенерировать список объектов Bus");
+                System.out.println("2 - Сгенерировать список объектов User");
+                System.out.println("3 - Сгенерировать список объектов Student");
+                System.out.println("0 - Выйти из программы");
+                int choice = scanner.nextInt();
 
-            // Обработка выхода из программы
-            if (choice == 0) {
-                System.out.println("Выход из программы...");
-                continueProgram = false;
-                continue;
-            }
+                if (choice == 0) {
+                    System.out.println("Выход из программы...");
+                    continueProgram = false;
+                    continue;
+                }
 
-            // Пользователь выбирает размер массива
-            System.out.println("Введите размер массива (от 1 до 20):");
-            int arraySize = scanner.nextInt();
-            if (arraySize < 1 || arraySize > 20) {
-                System.out.println("Размер массива должен быть в пределах от 1 до 20.");
-                continue;  // Возвращаемся к выбору действия
-            }
+                System.out.println("Введите размер списка (от 1 до 20):");
+                int listSize = scanner.nextInt();
+                if (listSize < 1 || listSize > 20) {
+                    System.out.println("Размер списка должен быть в пределах от 1 до 20.");
+                    continue;
+                }
 
-            // В зависимости от выбора создаем массив и заполняем случайными значениями
-            switch (choice) {
-                case 1: // Bus
-                    Bus[] buses = new Bus[arraySize];
-                    for (int i = 0; i < arraySize; i++) {
-                        buses[i] = new Bus(
-                                "Bus-" + random.nextInt(1000),  // случайный номер автобуса
-                                "Model-" + (char)(random.nextInt(26) + 'A'),  // случайная модель
-                                random.nextInt(100000)  // случайный пробег
-                        );
-                    }
-                    printArray(buses);
-                    break;
+                switch (choice) {
+                    case 1: // Bus
+                        List<Bus> buses = new ArrayList<>();
+                        for (int i = 0; i < listSize; i++) {
+                            buses.add(new Bus(
+                                    "Bus-" + random.nextInt(1000),
+                                    "Model-" + (char)(random.nextInt(26) + 'A'),
+                                    random.nextInt(100000)
+                            ));
+                        }
+                        printList(buses);
+                        break;
 
-                case 2: // User
-                    User[] users = new User[arraySize];
-                    for (int i = 0; i < arraySize; i++) {
-                        String fullName = generateRandomFullName(random);  // Случайное человеческое имя
-                        users[i] = new User(
-                                fullName,  // случайное имя и фамилия
-                                "Pass" + random.nextInt(1000),  // случайный пароль
-                                fullName.replace(" ", ".").toLowerCase() + "@example.com"  // генерируем email на основе имени
-                        );
-                    }
-                    printArray(users);
-                    break;
+                    case 2: // User
+                        List<User> users = new ArrayList<>();
+                        for (int i = 0; i < listSize; i++) {
+                            String fullName = generateRandomFullName(random);
+                            users.add(new User(
+                                    fullName,
+                                    "Pass" + random.nextInt(1000),
+                                    fullName.replace(" ", ".").toLowerCase() + "@example.com"
+                            ));
+                        }
+                        printList(users);
+                        break;
 
-                case 3: // Student
-                    Student[] students = new Student[arraySize];
-                    for (int i = 0; i < arraySize; i++) {
-                        students[i] = new Student(
-                                "Group" + random.nextInt(100),  // случайный номер группы
-                                2 + random.nextDouble() * 3,
-                                "ID-" + random.nextInt(10000)  // случайный номер студенческого
-                        );
-                    }
-                    printArray(students);
-                    break;
+                    case 3: // Student
+                        List<Student> students = new ArrayList<>();
+                        for (int i = 0; i < listSize; i++) {
+                            students.add(new Student(
+                                    "Group" + random.nextInt(100),
+                                    2 + random.nextDouble() * 3,
+                                    "ID-" + random.nextInt(10000)
+                            ));
+                        }
+                        printList(students);
+                        break;
 
-                default:
-                    System.out.println("Неверный выбор!");
-                    break;
+                    default:
+                        System.out.println("Неверный выбор!");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Ошибка: введите корректное числовое значение.");
+                scanner.next(); // Очищаем ввод, чтобы избежать бесконечного цикла
             }
         }
         scanner.close();
     }
 
-    // Метод для генерации случайного полного имени (имя + фамилия)
     private static String generateRandomFullName(Random random) {
         String name = NAMES[random.nextInt(NAMES.length)];
         String surname = SURNAMES[random.nextInt(SURNAMES.length)];
         return name + " " + surname;
     }
 
-    // Метод для вывода массива объектов
-    public static <T> void printArray(T[] array) {
-        for (T item : array) {
+    public static <T> void printList(List<T> list) {
+        for (T item : list) {
             System.out.println(item);
         }
     }
 }
+
 
 // Класс Bus
 class Bus {
